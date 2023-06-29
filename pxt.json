@@ -1,0 +1,28 @@
+{
+    "name": "pxt-SBC_MotoDriver3",
+    "version": "1.0.0",
+    "description": "MakeCode package for SBC_MotoDriver3",
+    "license": "MIT",
+    "dependencies": {
+        "core": "*",
+        "radio": "*",
+        "microphone": "*"
+    },
+    "files": [
+        "README.md",
+        "SBC_MotoDriver3.ts",
+        "_locales/de/pxt-SBC-MotoDriver3-strings.json",
+        "_locales/de/pxt-SBC-MotoDriver3-jsdoc-strings.json"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "targetVersions": {
+        "target": "6.0.8",
+        "targetId": "microbit"
+    },
+    "supportedTargets": [
+        "microbit"
+    ],
+    "preferredEditor": "tsprj"
+}

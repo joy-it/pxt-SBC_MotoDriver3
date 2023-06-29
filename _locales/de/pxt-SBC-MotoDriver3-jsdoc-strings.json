@@ -1,0 +1,20 @@
+{
+  "SBC_MotoDriver3": "PCA9634 8-bit Fm+ I2C-Bus LED-Treiber",
+  "SBC_MotoDriver3.Stepper": "Basierend auf der Geschwindigkeit und der maximalen Anzahl der Schritte. Bestimmen Sie die Richtung, in die sich der Schrittmotor drehen soll.",
+  "SBC_MotoDriver3.StepperSpeed": "Einstellen der Geschwindigkeit und der maximalen Schrittanzahl fuer den Schrittmotor",
+  "SBC_MotoDriver3.allOff": "Schalten Sie alle Kanaele aus",
+  "SBC_MotoDriver3.allOn": "Schalten Sie alle Kanaele ein",
+  "SBC_MotoDriver3.begin": "Starten Sie die Kommunikation ueber I2C",
+  "SBC_MotoDriver3.enable": "Aktivieren oder Deaktivieren der Ausgaenge",
+  "SBC_MotoDriver3.fadeIn": "Ueberblenden eines einzelnen Kanals auf einen bestimmten Wert ueber eine bestimmte Zeit",
+  "SBC_MotoDriver3.fadeOut": "Ueberblenden eines einzelnen Kanals auf einen bestimmten Wert ueber eine bestimmte Zeit",
+  "SBC_MotoDriver3.initSBC_MotoDriver3": "Aendern der I2C-Adresse und des Freigabepins aufgrund von Benutzereingaben",
+  "SBC_MotoDriver3.ledStatus": "Lesen des Status der angegebenen Kanaele\r\n0 = aus\r\n1 = ein\r\n2 = pwm",
+  "SBC_MotoDriver3.off": "Einen einzelnen Kanal ausschalten (akzeptiert Werte zwischen 0 und 7)",
+  "SBC_MotoDriver3.on": "Einen einzelnen Kanal einschalten (akzeptiert Werte zwischen 0 und 7)",
+  "SBC_MotoDriver3.pwm": "Schreiben eines bestimmten Wertes in einen bestimmten Kanal",
+  "SBC_MotoDriver3.pwmStatus": "Lesen des aktuellen Pwm-Wertes am angegebenen Pin",
+  "SBC_MotoDriver3.soft_reset": "Zuruecksetzen des SBC_MotoDriver3",
+  "SBC_MotoDriver3direction": "Aufzaehlung der verfuegbaren Richtungen",
+  "SBC_MotoDriver3pin": "Aufzaehlung der verfuegbaren Pins"
+}
