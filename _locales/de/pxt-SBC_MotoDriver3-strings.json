@@ -1,0 +1,23 @@
+{
+  "SBC_MotoDriver3.StepperSpeed|block": "Setzen Sie die Geschwindigkeit des Steppers auf |%speed| rpm mit |%steps| Schritten",
+  "SBC_MotoDriver3.Stepper|block": "Bewegen des Schrittmotors |%stepAmount| Schritte auf Pins |%pin1|, |%pin2|, |%pin3|, |%pin4|",
+  "SBC_MotoDriver3.allOff|block": "Alle Kanaele ausschalten",
+  "SBC_MotoDriver3.allOn|block": "Schalten Sie alle %SBC_MotoDriver3direction Kanaele ein",
+  "SBC_MotoDriver3.enable|block": "Setzen Sie den Enablepin auf %SBC_MotoDriver3pin und aktivieren/deaktivieren Sie die Ausgaenge ? %Zustand",
+  "SBC_MotoDriver3.fadeIn|block": "Kanal |%pin| ueber %Timer Millisekunden auf |%Helligkeit| einblenden",
+  "SBC_MotoDriver3.fadeOut|block": "Kanal |%pin| ueber %Timer Millisekunden auf |%Helligkeit| ausblenden",
+  "SBC_MotoDriver3.initSBC_MotoDriver3|block": "Initialisieren des SBC_MotoDriver3 mit der Adresse %address",
+  "SBC_MotoDriver3.ledStatus|block": "Status des Kanals ablesen |%pin|",
+  "SBC_MotoDriver3.off|block": "Kanal ausschalten |%pin|",
+  "SBC_MotoDriver3.on|block": "Kanal einschalten |%pin|",
+  "SBC_MotoDriver3.pwmStatus|block": "Lesen des Pwm-Status von Kanal |%pin|",
+  "SBC_MotoDriver3.pwm|block": "Kanal |%pin| auf PWM-Wert setzen |%val|",
+  "SBC_MotoDriver3.soft_reset|block": "Zuruecksetzen des SBC_MotoDriver3",
+  "SBC_MotoDriver3direction.All|block": "Alle",
+  "SBC_MotoDriver3direction.Backward|block": "Rueckwaerts",
+  "SBC_MotoDriver3direction.Forward|block": "Forwaerts",
+  "SBC_MotoDriver3pin.P12|block": "Pin 12",
+  "SBC_MotoDriver3pin.P8|block": "Pin 8",
+  "SBC_MotoDriver3|block": "SBC_MotoDriver3",
+  "{id:category}SBC_MotoDriver3": "SBC_MotoDriver3"
+}

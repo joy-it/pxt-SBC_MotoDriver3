@@ -1,10 +1,9 @@
 {
   "SBC_MotoDriver3": "PCA9634 8-bit Fm+ I2C-Bus LED-Treiber",
-  "SBC_MotoDriver3.Stepper": "Basierend auf der Geschwindigkeit und der maximalen Anzahl der Schritte. Bestimmen Sie die Richtung, in die sich der Schrittmotor drehen soll.",
+  "SBC_MotoDriver3.Stepper": "Basierend auf der Geschwindigkeit und der maximalen Anzahl der Schritte. Bestimmen Sie die Richtung, in die sich der Schrittmotor drehen soll",
   "SBC_MotoDriver3.StepperSpeed": "Einstellen der Geschwindigkeit und der maximalen Schrittanzahl fuer den Schrittmotor",
   "SBC_MotoDriver3.allOff": "Schalten Sie alle Kanaele aus",
   "SBC_MotoDriver3.allOn": "Schalten Sie alle Kanaele ein",
-  "SBC_MotoDriver3.begin": "Starten Sie die Kommunikation ueber I2C",
   "SBC_MotoDriver3.enable": "Aktivieren oder Deaktivieren der Ausgaenge",
   "SBC_MotoDriver3.fadeIn": "Ueberblenden eines einzelnen Kanals auf einen bestimmten Wert ueber eine bestimmte Zeit",
   "SBC_MotoDriver3.fadeOut": "Ueberblenden eines einzelnen Kanals auf einen bestimmten Wert ueber eine bestimmte Zeit",
