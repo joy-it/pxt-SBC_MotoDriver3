@@ -196,8 +196,8 @@ namespace SBC_MotoDriver3 {
     /**
      * Turn on a single channel (accepts values between 0 and 7)
      */
-    //% blockId="SBC_MotoDriver3_ON" block="Turn on channel %pin"
-    //% pin.defl=0
+    //% blockId="SBC_MotoDriver3_ON" block="Turn on channel |%pin\\"
+    //% pin.min= 0 pin.max=7 pin.defl=0
     //% color="#275C6B" weight=85 blockGap=8
     //% parts=led_SBC_MotoDriver3 trackArgs=0
     export function on(pin: number) {
@@ -266,7 +266,7 @@ namespace SBC_MotoDriver3 {
     //% blockId="SBC_MotoDriver3_FADEIN" block="Fade in channel %pin over %timer milliseconds to %brightness"
     //% pin.min=0 pin.max=7 pin.defl=0
     //% timer.min=0 timer.defl=20000
-    //% brightness.min=0 brightness.max=250 brightness.defl=250
+    //% brightness.min=0 brightness.max=250 timer.defl=250
     //% color="#275C6B" weight=65 blockGap=8
     //% parts=led_SBC_MotoDriver3 trackArgs=0
     export function fadeIn(pin: number, timer: number, brightness: number) {
@@ -288,7 +288,7 @@ namespace SBC_MotoDriver3 {
     //% blockId="SBC_MotoDriver3_FADEOUT" block="Fade out channel %pin over %timer milliseconds to %brightness"
     //% pin.min=0 pin.max=7 pin.defl=0
     //% timer.min=0 timer.defl=20000
-    //% brightness.min=0 brightness.max=250 brightness.defl=0
+    //% brightness.min=0 brightness.max=250 timer.defl=0
     //% color="#275C6B" weight=60 blockGap=8
     //% parts=led_SBC_MotoDriver3 trackArgs=0
     export function fadeOut(pin: number, timer: number, brightness: number) {
