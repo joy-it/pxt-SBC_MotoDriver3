@@ -10,7 +10,7 @@
     },
     "files": [
         "README.md",
-        "SBC-MotoDriver3.ts",
+        "SBC_MotoDriver3.ts",
         "_locales/de/pxt-SBC-MotoDriver3-strings.json",
         "_locales/de/pxt-SBC-MotoDriver3-jsdoc-strings.json"
     ],
