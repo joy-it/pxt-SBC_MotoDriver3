@@ -196,8 +196,8 @@ namespace SBC_MotoDriver3 {
     /**
      * Turn on a single channel (accepts values between 0 and 7)
      */
-    //% blockId="SBC_MotoDriver3_ON" block="Turn on channel %pin"
-    //% pin.min= 0 pin.max=7 pin.defl=0
+    //% blockId="SBC_MotoDriver3_ON" block="Turn on |channel %pin|\\"
+    //% pin.min= 0 pin.max=7
     //% color="#275C6B" weight=85 blockGap=8
     //% parts=led_SBC_MotoDriver3 trackArgs=0
     export function on(pin: number) {
