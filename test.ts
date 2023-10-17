@@ -20,7 +20,7 @@ basic.forever(function () {
     SBC_MotoDriver3.allOn(SBC_MotoDriver3direction.Backward)
     basic.pause(1000)
     SBC_MotoDriver3.allOff()
-    basic.pause(2000)
+    basic.pause(1000)
     // Switch on a specific output
     SBC_MotoDriver3.on(0)
     basic.pause(2000)
@@ -39,7 +39,7 @@ basic.forever(function () {
     basic.pause(2000)
     SBC_MotoDriver3.allOff()
     basic.pause(1000)
-    serial.writeLine("Stepper")
+    /*serial.writeLine("Stepper")
     // Let the stepper motor move the desired number of steps on the desired pins at the previously set speed.
     SBC_MotoDriver3.Stepper(
     2000,
@@ -48,5 +48,5 @@ basic.forever(function () {
     6,
     7
     )
-    basic.pause(1000)
+    basic.pause(1000)*/
 })
