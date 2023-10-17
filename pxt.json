@@ -11,6 +11,7 @@
     "files": [
         "README.md",
         "SBC_MotoDriver3.ts",
+        "test.ts",
         "_locales/de/pxt-SBC-MotoDriver3-strings.json",
         "_locales/de/pxt-SBC-MotoDriver3-jsdoc-strings.json"
     ],
