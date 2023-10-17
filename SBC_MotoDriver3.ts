@@ -46,10 +46,43 @@ namespace SBC_MotoDriver3 {
      * Changing the I2C address and enable pin based on user input
      */
     //% blockId="SBC_MotoDriver3_INIT" block="Initialize the SBC_MotoDriver3 with Address %address"
-    //% color="#275C6B" weight=100 blockGap=8
+    //% address.defl=21
+    //% color="#275C6B" weight=0 blockGap=8
     //% parts=led_SBC_MotoDriver3 trackArgs=0
     export function initSBC_MotoDriver3(address: number) {
         let _address = address
+        basic.pause(10)
+        write_reg(0x00, 0x01)
+        basic.pause(0.5)
+        write_reg(0x01, 0x14)
+        basic.pause(10)
+    }
+
+    /**
+     * Enable or disable the outputs
+     */
+    //% blockId="SBC_MotoDriver3_ENABLE" block="Set the enablepin to %SBC_MotoDriver3pin and enable/disable the outputs ? %state"
+    //% state.defl=true
+    //% SBC_MotoDriver3pin.defl=P8
+    //% color="#275C6B" weight=5 blockGap=8
+    //% parts=led_SBC_MotoDriver3 trackArgs=0
+    export function enable(selection: SBC_MotoDriver3pin, state: boolean) {
+        if (selection == SBC_MotoDriver3pin.P8) {
+            if (state) {
+                pins.digitalWritePin(DigitalPin.P8, 0)
+            }
+            else {
+                pins.digitalWritePin(DigitalPin.P8, 1)
+            }
+        }
+        else if (selection == SBC_MotoDriver3pin.P12) {
+            if (state) {
+                pins.digitalWritePin(DigitalPin.P12, 0)
+            }
+            else {
+                pins.digitalWritePin(DigitalPin.P12, 1)
+            }
+        }
     }
 
     // Write the required 8-bit value into the register
@@ -74,27 +107,13 @@ namespace SBC_MotoDriver3 {
      * Reset the SBC_MotoDriver3
      */
     //% blockId="SBC_MotoDriver3_RESET" block="Reset the SBC_MotoDriver3"
-    //% color="#275C6B" weight=100 blockGap=8
+    //% color="#275C6B" weight=10 blockGap=8
     //% parts=led_SBC_MotoDriver3 trackArgs=0
     export function soft_reset(): void {
         let num = pins.createBuffer(2)
         num.setNumber(NumberFormat.Int8LE, 0, 0xA5)
         num.setNumber(NumberFormat.Int8LE, 1, 0x5A)
         pins.i2cWriteBuffer(0x03, num, false)
-    }
-
-    /**
-     * Start the communication over I2C
-     */
-    //% blockId="SBC_MotoDriver3_BEGIN" block="Set up and start the communication"
-    //% color="#275C6B" weight=100 blockGap=8
-    //% parts=led_SBC_MotoDriver3 trackArgs=0
-    export function begin(): void {
-        basic.pause(10)
-        write_reg(0x00, 0x01)
-        basic.pause(0.5)
-        write_reg(0x01, 0x14)
-        basic.pause(10)
     }
 
     /**
@@ -175,35 +194,10 @@ namespace SBC_MotoDriver3 {
     }
 
     /**
-     * Enable or disable the outputs
-     */
-    //% blockId="SBC_MotoDriver3_ENABLE" block="Set the enablepin to %SBC_MotoDriver3pin and enable/disable the outputs ? %state"
-    //% color="#275C6B" weight=100 blockGap=8
-    //% parts=led_SBC_MotoDriver3 trackArgs=0
-    export function enable(selection: SBC_MotoDriver3pin, state: boolean) {
-        if (selection == SBC_MotoDriver3pin.P8) {
-            if (state) {
-                pins.digitalWritePin(DigitalPin.P8, 0)
-            }
-            else {
-                pins.digitalWritePin(DigitalPin.P8, 1)
-            }
-        }
-        else if (selection == SBC_MotoDriver3pin.P12) {
-            if (state) {
-                pins.digitalWritePin(DigitalPin.P12, 0)
-            }
-            else {
-                pins.digitalWritePin(DigitalPin.P12, 1)
-            }
-        }
-    }
-
-    /**
      * Turn on a single channel (accepts values between 0 and 7)
      */
     //% blockId="SBC_MotoDriver3_ON" block="Turn on channel %pin"
-    //% color="#275C6B" weight=100 blockGap=8
+    //% color="#275C6B" weight=15 blockGap=8
     //% parts=led_SBC_MotoDriver3 trackArgs=0
     export function on(pin: number) {
         pinType(1, pin)
@@ -214,7 +208,7 @@ namespace SBC_MotoDriver3 {
      * Turn off a single channel (accepts values between 0 and 7)
      */
     //% blockId="SBC_MotoDriver3_OFF" block="Turn off channel %pin"
-    //% color="#275C6B" weight=100 blockGap=8
+    //% color="#275C6B" weight=20 blockGap=8
     //% parts=led_SBC_MotoDriver3 trackArgs=0
     export function off(pin: number) {
         pinType(0, pin)
@@ -225,7 +219,7 @@ namespace SBC_MotoDriver3 {
      * Turn on all the channels
      */
     //% blockId="SBC_MotoDriver3_ALLON" block="Turn on all %SBC_MotoDriver3direction channels"
-    //% color="#275C6B" weight=100 blockGap=8
+    //% color="#275C6B" weight=25 blockGap=8
     //% parts=led_SBC_MotoDriver3 trackArgs=0
     export function allOn(selection: SBC_MotoDriver3direction) {
         if (selection == SBC_MotoDriver3direction.Forward) {
@@ -254,7 +248,7 @@ namespace SBC_MotoDriver3 {
      * Turn off all the channels
      */
     //% blockId="SBC_MotoDriver3_ALLOFF" block="Turn off all channels"
-    //% color="#275C6B" weight=100 blockGap=8
+    //% color="#275C6B" weight=30 blockGap=8
     //% parts=led_SBC_MotoDriver3 trackArgs=0
     export function allOff(): void {
         pinType(0, 0, true)
@@ -267,7 +261,7 @@ namespace SBC_MotoDriver3 {
      * Fade a single channel to a specified value over a specified time
      */
     //% blockId="SBC_MotoDriver3_FADEIN" block="Fade in channel %pin over %timer milliseconds to %brightness"
-    //% color="#275C6B" weight=100 blockGap=8
+    //% color="#275C6B" weight=35 blockGap=8
     //% parts=led_SBC_MotoDriver3 trackArgs=0
     export function fadeIn(pin: number, timer: number, brightness: number) {
         let interval: number
@@ -286,7 +280,7 @@ namespace SBC_MotoDriver3 {
      * Fade a single channel to a specified value over a specified time
      */
     //% blockId="SBC_MotoDriver3_FADEOUT" block="Fade out channel %pin over %timer milliseconds to %brightness"
-    //% color="#275C6B" weight=100 blockGap=8
+    //% color="#275C6B" weight=40 blockGap=8
     //% parts=led_SBC_MotoDriver3 trackArgs=0
     export function fadeOut(pin: number, timer: number, brightness: number) {
         let interval: number
@@ -306,7 +300,7 @@ namespace SBC_MotoDriver3 {
      * Write a specified value to a specified channel
      */
     //% blockId="SBC_MotoDriver3_PWM" block="Set channel %pin to pwm value %val"
-    //% color="#275C6B" weight=100 blockGap=8
+    //% color="#275C6B" weight=45 blockGap=8
     //% parts=led_SBC_MotoDriver3 trackArgs=0
     export function pwm(pin: number, val: number) {
         pinType(2, pin)
@@ -320,7 +314,7 @@ namespace SBC_MotoDriver3 {
      * 2 = pwm
      */
     //% blockId="SBC_MotoDriver3_LEDSTATUS" block="Read the status of channel %pin"
-    //% color="#275C6B" weight=100 blockGap=8
+    //% color="#275C6B" weight=50 blockGap=8
     //% parts=led_SBC_MotoDriver3 trackArgs=0
     export function ledStatus(pin: number) {
         let first, second
@@ -354,7 +348,7 @@ namespace SBC_MotoDriver3 {
      * Read the current pwm value on the given pin
      */
     //% blockId="SBC_MotoDriver3_PWMSTATUS" block="Read the pwm status of channel %pin"
-    //% color="#275C6B" weight=100 blockGap=8
+    //% color="#275C6B" weight=55 blockGap=8
     //% parts=led_SBC_MotoDriver3 trackArgs=0
     export function pwmStatus(pin: number) {
         return read_reg(pin + 2)
@@ -366,7 +360,7 @@ namespace SBC_MotoDriver3 {
     //% blockId="SBC_MotoDriver3_STEPPERSPEED" block="Set the speed of the Stepper to %speed rpm with %steps steps"
     //% speed.min=0 speed.max=30 speed.defl=15     <-- speed muss auf 30 Limitiert werden da die I2C Hardware auf dem micro:bit das sonst nicht schafft
     //% steps.defl=2048
-    //% color="#275C6B" weight=100 blockGap=8
+    //% color="#275C6B" weight=60 blockGap=8
     //% parts=led_SBC_MotoDriver3 trackArgs=0
     export function StepperSpeed(speed: number, steps: number) {
         numberSteps = steps
@@ -376,12 +370,13 @@ namespace SBC_MotoDriver3 {
     /**
      * Based on the speed and the max amount of steps. Decide the direction in which the stepper motor is supposed to turn
      */
-    //% blockId="SBC_MotoDriver3_STEPPER" block="Move the Stepper motor %stepAmount on %pin1, %pin2, %pin3, %pin4"
+    //% blockId="SBC_MotoDriver3_STEPPER" block="Move the Stepper motor %stepAmount Steps on Pins %pin1, %pin2, %pin3, %pin4"
+    //% stepAmount.min=0 stepAmount.max=2048 stepAmount.defl=2000
     //% pin1.min=0 pin1.max=7 pin1.defl=4
     //% pin2.min=0 pin2.max=7 pin2.defl=5
     //% pin3.min=0 pin3.max=7 pin3.defl=6
     //% pin4.min=0 pin4.max=7 pin4.defl=7
-    //% color="#275C6B" weight=100 blockGap=8
+    //% color="#275C6B" weight=65 blockGap=8
     //% parts=led_SBC_MotoDriver3 trackArgs=0
     export function Stepper(stepAmount: number, pin1: number, pin2: number, pin3: number, pin4: number) {
         let now: number
