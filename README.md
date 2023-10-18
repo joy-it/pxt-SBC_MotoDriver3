@@ -13,12 +13,12 @@ As soon as the I2C addresses can no longer be found or the connected motors no l
 
 # Basic functionality
 
-## I2C Address
-You can use the `Initialize SBC_MotoDriver3 with Address (...)` block to change the I2C address used for communication with the PCA.
+## I2C Address and starting communication
+You can use the `Initialize SBC_MotoDriver3 with Address (...)` block to change the I2C address used for communication with the PCA and start the communication.
 ```typescript
 // Change the I2C address depending on how the resistors on the board are set.
 // Default initialization with A1 = 1 | A2 = 0 | A3 = 1 | A4 = 0 | A5 = 1 | A6 = 0 | A7 = 0, resulting in I2C address 0x15
-SBC_MotoDriver3.initSBC_MotoDriver3(0)
+SBC_MotoDriver3.initSBC_MotoDriver3(21)
 ```
 
 ## Soft Reset
@@ -28,20 +28,13 @@ The `Reset the SBC_MotoDriver3` block allows you to do a Software Reset of the P
 SBC_MotoDriver3.soft_reset()
 ```
 
-## Starting communication
-The block `Set up and start the communication` can be used to start the communication between a microcontroller or single board computer and the SBC_MotoDriver3 with the previously defined address.
-```typescript
-// Start the communication with the PCA
-SBC_MotoDriver3.begin()
-```
-
 ## Enable
-With the block `Set the enablepin to (...) and enable/disable the outputs ? (...)` you can choose between two pins and if you want to enable or disable **THE ENTIRE OUTPUT** of the SBC_MotoDriver3.
+With the block `Set the enablepin to (...) and (...)` you can choose between two pins and if you want to enable or disable **THE ENTIRE OUTPUT** of the SBC_MotoDriver3.
 ```typescript
 // Change the pin to better fit your needs, choose between pin 8 and pin 12
-// Choose between true and false to enable or disable the output of the PCA
-// Standard will be pin 8 and false
-SBC_MotoDriver3.enable(SBC_MotoDriver3pin.P8, false)
+// Choose between On and Off to enable or disable the output of the PCA
+// Standard will be pin 8 and On
+SBC_MotoDriver3.enable(SBC_MotoDriver3pin.P8, SBC_MotoDriver3state.On)
 ```
 
 ## On
