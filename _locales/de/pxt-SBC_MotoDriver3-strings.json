@@ -18,6 +18,8 @@
   "SBC_MotoDriver3direction.Forward|block": "Vorwaerts",
   "SBC_MotoDriver3pin.P12|block": "Pin 12",
   "SBC_MotoDriver3pin.P8|block": "Pin 8",
+  "SBC_MotoDriver3state.On|block": "On",
+  "SBC_MotoDriver3state.Off|block": "Off",
   "SBC_MotoDriver3|block": "SBC_MotoDriver3",
   "{id:category}SBC_MotoDriver3": "SBC_MotoDriver3"
 }

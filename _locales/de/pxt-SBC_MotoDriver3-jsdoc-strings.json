@@ -15,5 +15,6 @@
   "SBC_MotoDriver3.pwmStatus": "Lesen des aktuellen Pwm-Wertes am angegebenen Pin",
   "SBC_MotoDriver3.soft_reset": "Zuruecksetzen des SBC_MotoDriver3",
   "SBC_MotoDriver3direction": "Aufzaehlung der verfuegbaren Richtungen",
-  "SBC_MotoDriver3pin": "Aufzaehlung der verfuegbaren Pins"
+  "SBC_MotoDriver3pin": "Aufzaehlung der verfuegbaren Pins",
+  "SBC_MotoDriver3state": "Aufzaehlung der verfuegbaren Zustaende fuer den Enable Pin"
 }
