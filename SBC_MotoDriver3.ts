@@ -21,6 +21,16 @@ enum SBC_MotoDriver3direction {
 }
 
 /**
+  * Enumeration of available states for the Enable Pin
+  */
+enum SBC_MotoDriver3state {
+    //% block="On"
+    On,
+    //% block="Off"
+    Off
+}
+
+/**
   * PCA9634 8-bit Fm+ I2C-bus LED driver
   */
 //% color="#275C6B" weight=100 icon="\uf0e7" block="SBC_MotoDriver3"
@@ -61,14 +71,14 @@ namespace SBC_MotoDriver3 {
     /**
      * Enable or disable the outputs
      */
-    //% blockId="SBC_MotoDriver3_ENABLE" block="Set the enablepin to %SBC_MotoDriver3pin and enable/disable the outputs ? %state"
-    //% state.defl=true
+    //% blockId="SBC_MotoDriver3_ENABLE" block="Set the enablepin to %SBC_MotoDriver3pin and %SBC_MotoDriver3state"
+    //% SBC_MotoDriver3state.defl=On
     //% SBC_MotoDriver3pin.defl=P8
     //% color="#275C6B" weight=95 blockGap=8
     //% parts=led_SBC_MotoDriver3 trackArgs=0
-    export function enable(selection: SBC_MotoDriver3pin, state: boolean) {
+    export function enable(selection: SBC_MotoDriver3pin, state: SBC_MotoDriver3state) {
         if (selection == SBC_MotoDriver3pin.P8) {
-            if (state) {
+            if (state == SBC_MotoDriver3state.On) {
                 pins.digitalWritePin(DigitalPin.P8, 0)
             }
             else {
@@ -76,7 +86,7 @@ namespace SBC_MotoDriver3 {
             }
         }
         else if (selection == SBC_MotoDriver3pin.P12) {
-            if (state) {
+            if (state == SBC_MotoDriver3state.On) {
                 pins.digitalWritePin(DigitalPin.P12, 0)
             }
             else {
@@ -100,7 +110,7 @@ namespace SBC_MotoDriver3 {
         pins.i2cWriteNumber(_address, reg & 0x1F, NumberFormat.Int8LE, false)
         let result = pins.i2cReadBuffer(_address, 1, false)
         let result1 = result.getNumber(NumberFormat.UInt8LE, 0)
-        return result1 
+        return result1
     }
 
     /**
@@ -119,25 +129,25 @@ namespace SBC_MotoDriver3 {
     /**
      * Sets a channel or all channels to a different state (pin 0-7)
      */
-    function pinType(type0: number, pin: number, all:boolean = false) {
+    function pinType(type0: number, pin: number, all: boolean = false) {
         let dataType, regValue: number
         let bc, bs, bc0, bc1: number
 
-        if(type0 > 2) {
+        if (type0 > 2) {
             type0 = 0
         }
-        if(type0 == 0) {
-            if(all) {
+        if (type0 == 0) {
+            if (all) {
                 write_reg(LEDOUT0, LED_OFF_ALL)
                 write_reg(LEDOUT1, LED_OFF_ALL)
             }
-            else if(pin < 4) {
+            else if (pin < 4) {
                 regValue = read_reg(LEDOUT0)
                 bc0 = bitClear(regValue, (pin * 2))
                 bc1 = bitClear(regValue, (pin * 2 + 1))
                 write_reg(LEDOUT0, bc1)
             }
-            else if(pin >= 4) {
+            else if (pin >= 4) {
                 pin -= 4
                 regValue = read_reg(LEDOUT1)
                 bc0 = bitClear(regValue, (pin * 2))
@@ -145,18 +155,18 @@ namespace SBC_MotoDriver3 {
                 write_reg(LEDOUT1, bc1)
             }
         }
-        else if(type0 == 1) {
-            if(all) {
+        else if (type0 == 1) {
+            if (all) {
                 write_reg(LEDOUT0, LED_ON_ALL)
                 write_reg(LEDOUT1, LED_ON_ALL)
             }
-            else if(pin < 4) {
+            else if (pin < 4) {
                 regValue = read_reg(LEDOUT0)
                 bc = bitClear(regValue, (pin * 2))
                 bs = bitSet(regValue, (pin * 2 + 1))
                 write_reg(LEDOUT0, bs)
             }
-            else if(pin >= 4) {
+            else if (pin >= 4) {
                 pin -= 4
                 regValue = read_reg(LEDOUT1)
                 bc = bitClear(regValue, (pin * 2))
@@ -165,17 +175,17 @@ namespace SBC_MotoDriver3 {
             }
         }
         else if (type0 == 2) {
-            if(all) {
+            if (all) {
                 write_reg(LEDOUT0, LED_PWM_ALL)
                 write_reg(LEDOUT1, LED_PWM_ALL)
             }
-            else if(pin < 4) {
+            else if (pin < 4) {
                 regValue = read_reg(LEDOUT0)
                 bc = bitClear(regValue, (pin * 2))
                 bs = bitSet(regValue, (pin * 2 + 1))
                 write_reg(LEDOUT0, bs)
             }
-            else if(pin >= 4) {
+            else if (pin >= 4) {
                 pin -= 4
                 regValue = read_reg(LEDOUT1)
                 bc = bitClear(regValue, (pin * 2))
@@ -189,7 +199,7 @@ namespace SBC_MotoDriver3 {
      * Writes a pwm value to a channel (accepts a channel value between 0 and 7)
      */
     function chanPwm(channel: number, val: number) {
-        channel = channel+2
+        channel = channel + 2
         write_reg(channel, val)
     }
 
@@ -229,14 +239,14 @@ namespace SBC_MotoDriver3 {
             let pin: number = 0
             for (let i = 0; i < 4; i++) {
                 pwm(pin, 255)
-                pin = pin+2
+                pin = pin + 2
             }
         }
         else if (selection == SBC_MotoDriver3direction.Backward) {
             let pin: number = 1
             for (let i = 0; i < 4; i++) {
                 pwm(pin, 255)
-                pin = pin+2
+                pin = pin + 2
             }
         }
         else if (selection == SBC_MotoDriver3direction.All) {
@@ -331,7 +341,7 @@ namespace SBC_MotoDriver3 {
     export function ledStatus(pin: number) {
         let first, second
         let regValue = 0
-        if(pin < 4) {
+        if (pin < 4) {
             regValue = read_reg(LEDOUT0)
             first = ((regValue >> (pin * 2)) & 0x01)
             second = ((regValue >> (pin * 2 + 1)) & 0x01)
@@ -342,10 +352,10 @@ namespace SBC_MotoDriver3 {
             first = ((regValue >> (pin * 2)) & 0x01)
             second = ((regValue >> (pin * 2 + 1)) & 0x01)
         }
-        if(!first && !second) {
+        if (!first && !second) {
             return 0
         }
-        else if(first && !second) {
+        else if (first && !second) {
             return 1
         }
         else if (!first && second) {
@@ -480,7 +490,7 @@ namespace SBC_MotoDriver3 {
     /**
      * Returns an integer with the bit at 'offset' set to 1
      */
-    function bitSet(int_type: number, offset: number){
+    function bitSet(int_type: number, offset: number) {
         let mask: number
         mask = 1 << offset
         return (int_type | mask)
