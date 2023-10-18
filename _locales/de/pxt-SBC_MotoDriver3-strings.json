@@ -3,7 +3,7 @@
   "SBC_MotoDriver3.Stepper|block": "Bewegen des Schrittmotors |%stepAmount| Schritte auf Pins |%pin1|, |%pin2|, |%pin3|, |%pin4|",
   "SBC_MotoDriver3.allOff|block": "Alle Kanaele ausschalten",
   "SBC_MotoDriver3.allOn|block": "Schalten Sie alle %SBC_MotoDriver3direction Kanaele ein",
-  "SBC_MotoDriver3.enable|block": "Setzen Sie den Enablepin auf %SBC_MotoDriver3pin und aktivieren/deaktivieren Sie die Ausgaenge ? %Zustand",
+  "SBC_MotoDriver3.enable|block": "Setzen Sie den Enablepin auf %SBC_MotoDriver3pin und aktivieren/deaktivieren Sie die Ausgaenge ? %state",
   "SBC_MotoDriver3.fadeIn|block": "Kanal |%pin| ueber %timer Millisekunden auf |%brightness| einblenden",
   "SBC_MotoDriver3.fadeOut|block": "Kanal |%pin| ueber %timer Millisekunden auf |%brightness| ausblenden",
   "SBC_MotoDriver3.initSBC_MotoDriver3|block": "Initialisieren des SBC_MotoDriver3 mit der Adresse %address",
